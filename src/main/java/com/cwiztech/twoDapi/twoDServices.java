@@ -51,18 +51,48 @@ public class twoDServices {
 
 		
 		
-		public String insert() throws IOException{
+		public String insert(int value) throws IOException{
 			int[][] twoDarray = read();
 			BufferedWriter bw = new BufferedWriter(new FileWriter("csv.txt",false));
 			for(int i=0; i <twoDarray.length; i++){
 				for(int j=0; j<twoDarray[i].length;j++){
-					
+					bw.write(twoDarray[i][j]+"	");
 				}
+				bw.newLine();
 			}
-			
-			
-			return "Successfully added";
-			
+			bw.close();
+			return "Successfully added";	
 		}
 		
+		
+		public String delete(int index) throws IOException{
+			
+			return null;
+			
+		}
+
+
+	public String insertAll(String value, String value2) throws IOException {
+		BufferedWriter bw = new BufferedWriter(new FileWriter("csv.txt",true));
+		bw.append(value);
+		bw.append("	");
+		bw.append(value2);
+		
+		bw.close();
+		return "Values Entered into the file!";
+	}
+	
+	
+	 public String search(int value) throws IOException{
+     	int[][] twoDarray = read();
+     	int number = 0;
+     	for(int i = 0; i<twoDarray.length; i++){
+     		for(int j = 0; j<twoDarray[i].length; j++){
+     			if(twoDarray[i][j] == value){
+         			number++;	
+     		}
+     	}
+    }
+     	return(number+ "is the result.");
+     }
 }

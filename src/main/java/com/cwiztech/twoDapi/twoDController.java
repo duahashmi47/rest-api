@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cwiztech.arrayapi.services.twoDServices;
 
 @RestController
 @CrossOrigin
@@ -21,10 +20,16 @@ public class twoDController {
 		return obj.traverse();	
 	}
 	
-	@RequestMapping(value = "/insert/{value},{value}" , method = RequestMethod.POST)
+	@RequestMapping(value = "/insert/{value}" , method = RequestMethod.POST)
 	public String insert(@PathVariable int value) throws IOException{
 		twoDServices obj = new twoDServices();
 		return obj.insert(value);	
+	}
+	
+	@RequestMapping(value = "/insertAll/{value}/{value2}" , method = RequestMethod.POST)
+	public String insertAll(@PathVariable("value") String value, @PathVariable("value2") String value2) throws IOException{
+		twoDServices obj = new twoDServices();
+		return obj.insertAll(value,value2);	
 	}
 	
 	@RequestMapping(value = "/delete/{value}" , method = RequestMethod.DELETE)
